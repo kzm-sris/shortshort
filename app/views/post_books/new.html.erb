@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">画像投稿フォーム</h5>
+      <div class="form-body p-4">
+        <% if @post_book.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+            <h6 class="alert-heading">
+              <%= @post_book.errors.count %> ERROR!
+            </h6>
+            <% @post_book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= form_with model: @post_book do |f| %>
+          <div class="input-group mb-3 mt-4">
+            <%= f.text_field :title, class:"form-control", placeholder:"Title" %>
+            <%= f.text_area :body, class:"form-control", placeholder:"Story" %>
+          </div>
+          <hr>
+          <%= f.submit 'Post', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

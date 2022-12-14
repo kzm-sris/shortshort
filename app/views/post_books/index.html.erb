@@ -1,0 +1,19 @@
+<div class="card-list-container py-5">
+  <% @post_books.each do |post_book| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to(post_book_path(post_book.id), class:"text-dark") do %>
+              <strong><i class="far fa-flag"></i><span> <%= post_book.title %></span></strong>
+            <% end %>
+          </p>
+          <p class="card-text">Story：<%= post_book.body %></p>
+          <span><i class="fas fa-user"></i> By <%= post_book.user.name %> ｜ </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

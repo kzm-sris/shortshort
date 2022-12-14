@@ -1,0 +1,16 @@
+<div>
+  <h3><%= @user.name %></h3>
+  <% if @user == current_user %>
+    <p><%= link_to "Profile Edit", edit_user_path(@user)%></p>
+  <% end %>
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+
+<% @post_books.each do |post_book| %>
+<div>
+  <p>Title：<%= post_book.title %></p>
+  <p>Story：<%= post_book.body %></p>
+  <p>Date：<%= post_book.created_at.strftime('%Y/%m/%d') %></p>
+</div>
+<% end %>

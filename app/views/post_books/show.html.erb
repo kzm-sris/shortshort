@@ -1,0 +1,23 @@
+<div>
+  <p>UserName：<%= @post_book.user.name %></p>
+  <p>Title：<%= @post_book.title %></p>
+  <p>Story：<%= @post_book.body %></p>
+  <p>Date：<%= @post_book.created_at.strftime('%Y/%m/%d') %></p>
+   <% if @post_book.user == current_user %>
+    <%= link_to "Delete", post_book_path(@post_book), method: :delete %>
+  <% end %>
+  
+  <% if @post_book.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_book_favorites_path(@post_book), method: :delete do %>
+        ♥<%= @post_book.favorites.count %> Like
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_book_favorites_path(@post_book), method: :post do %>
+        ♡<%= @post_book.favorites.count %> Like
+      <% end %>
+    </p>
+  <% end %>
+</div>
