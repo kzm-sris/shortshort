@@ -14,7 +14,7 @@ class PostBooksController < ApplicationController
   end
 
   def index
-    @post_books = PostBook.all
+    @post_books = PostBook.page(params[:page])
   end
 
   def show
